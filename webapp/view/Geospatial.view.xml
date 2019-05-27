@@ -1,0 +1,37 @@
+<mvc:View 
+	controllerName="opensap.pole.controller.Geospatial"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:vbm="sap.ui.vbm"
+	xmlns:l="sap.ui.layout"
+	height="100%"
+	displayBlock="true">
+	<l:FixFlex class="fixFlexFixedSize">
+		<l:flexContent>
+			<vbm:AnalyticMap 
+				id="vbi" 
+				width="100%"
+				xmlns:l="sap.ui.layout"
+				height="100%"
+				initialPosition="0;10;0"
+				regionClick="onRegionClick"
+				regionContextMenu="onRegionContextMenu">
+				<vbm:vos>
+					<vbm:Circles items="{/Circles}" click="onClickItem"
+						contextMenu="onContextMenuItem">
+						<vbm:Circle position="{pos}" tooltip="{tooltip}"
+							radius="{radius}" color="rgba(92,186,230,0.6)" colorBorder="rgb(255,255,255)"
+							hotDeltaColor="rgba(92,186,230,0.8)" click="onClickCircle"
+							contextMenu="onContextMenuCircle" />
+					</vbm:Circles>
+				</vbm:vos>
+				<vbm:legend>
+					<vbm:Legend id="legend" caption="Legend">
+						<vbm:LegendItem text="Circle – radius in px" color="rgba(92,186,230,0.6)" />
+					</vbm:Legend>
+				</vbm:legend>
+			</vbm:AnalyticMap>
+		</l:flexContent>
+	</l:FixFlex>
+</mvc:View>

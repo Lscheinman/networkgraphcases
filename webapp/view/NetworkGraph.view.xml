@@ -1,0 +1,100 @@
+<mvc:View 
+	xmlns="sap.suite.ui.commons.networkgraph"
+	xmlns:layout="sap.suite.ui.commons.networkgraph.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m"
+	xmlns:l="sap.ui.layout"
+	height="100%" 
+	controllerName="opensap.pole.controller.NetworkGraph"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+			<l:FixFlex>
+				<l:fixContent>
+					<Graph
+							nodes="{/nodes}"
+							lines="{/lines}"
+							groups="{/groups}"
+							id="graph">
+						<layoutData>
+							<m:FlexItemData minWidth="75%" maxWidth="75%"/>
+						</layoutData>
+						<layoutAlgorithm>
+							<layout:ForceDirectedLayout
+									optimalDistanceConstant="0.26"
+									maxIterations="{settings>/maxIterations}"
+									maxTime="{settings>/maxTime}"
+									initialTemperature="{settings>/initialTemperature}"
+									coolDownStep="{settings>/coolDownStep}">
+							</layout:ForceDirectedLayout>
+						</layoutAlgorithm>
+						<nodes>
+							<Node
+									height="{settings>/height}"
+									key="{key}"
+									title="{title}"
+									icon="{icon}"
+									group="{group}"
+									attributes="{path:'attributes', templateShareable:true}"
+									shape="{shape}"
+									status="{status}"
+									x="{x}"
+									y="{y}"
+									showActionLinksButton="false"
+									showExpandButton="false"
+									>
+								<attributes>
+									<ElementAttribute
+											label="{label}"
+											value="{value}"/>
+								</attributes>
+								<actionButtons>
+									<ActionButton
+										icon="sap-icon://edit"
+					                	title="Update attributes"
+					                	press="updateNode"
+					                	position="Left"
+									>
+									</ActionButton>
+									<ActionButton
+										icon="sap-icon://share-2"
+					                	title="Add edge"
+					                	press="addEdge"
+					                	position="Left"
+									>
+									</ActionButton>
+									<ActionButton
+										icon="sap-icon://combine"
+					                	title="Merge nodes"
+					                	press="mergeNodes"
+					                	position="Left"
+									>
+									</ActionButton>
+									<ActionButton
+										icon="sap-icon://map-3"
+					                	title="Shortest Path"
+					                	press="getShortestPath"
+									>
+									</ActionButton>
+									<ActionButton
+										icon="sap-icon://overview-chart"
+					                	title="Traverse from Node"
+					                	press="traverseFromNode"
+									>
+									</ActionButton>
+								</actionButtons>
+							</Node>
+						</nodes>
+						<lines>
+							<Line
+									from="{from}"
+									to="{to}"
+									status="{status}"/>
+						</lines>
+						<groups>
+							<Group
+									key="{key}"
+									title="{title}"/>
+						</groups>
+					</Graph>
+				</l:fixContent>
+			</l:FixFlex>
+</mvc:View>
